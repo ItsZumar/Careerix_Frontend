@@ -77,7 +77,16 @@ const VerificationScreen = () => {
       console.log("OTP:", otpCode);
       // TODO: Verify OTP logic
       // After successful verification, navigate to profile setup
-      router.push(Screens.ProfileSetup as Href);
+      // router.push(Screens.ProfileSetup as Href);
+
+      router.replace({
+        pathname: "/profile-setup-complete",
+        params: {
+          title: "Password Changed!",
+          description: "You're all set! Your account is now secure with your new password.",
+          buttonText: "Start Browsing",
+        },
+      });
     }
   };
 
@@ -90,7 +99,9 @@ const VerificationScreen = () => {
   return (
     <ScreenWrapper style={LayoutStyles.horizontalSpacing}>
       <KeyboardResponsiveHOC containerStyle={styles.container}>
-        <BackButton />
+      <View style={styles.headerContainer}>
+            <BackButton />
+          </View>
 
         <View style={styles.content}>
           <View style={styles.titleContainer}>
@@ -143,6 +154,9 @@ export default VerificationScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  headerContainer: {
+    alignItems: "flex-start",
   },
   content: {
     flex: 1,

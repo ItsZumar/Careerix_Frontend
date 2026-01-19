@@ -20,6 +20,7 @@ export const colorPalette = {
 
     transparent: "rgba(0,0,0,0)",
     transparentWhite: "rgba(255,255,255,0.8)",
+    orangeWithOpacity: "rgba(255, 102, 0, 0.1)",
   },
 };
 
@@ -126,6 +127,8 @@ export const Typography = StyleSheet.create({
 
 export const iconSize = wp(5);
 
+export const GRADIENT_COLORS = ["#FF8533", colorPalette.primaryBg.primaryOrange] as const;
+
 export const FormsStyle = StyleSheet.create({
   formControl: {
     flex: 1,
@@ -161,7 +164,7 @@ export const LayoutStyles = StyleSheet.create({
     height: wp(6.5),
   },
   horizontalSpacing: {
-    paddingHorizontal: Spacing.md,
+    paddingHorizontal: Spacing.lg,
   },
   positionCenter: {
     alignItems: "center",

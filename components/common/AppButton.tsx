@@ -105,18 +105,11 @@ const containerPresets = {
     marginVertical: Spacing.md,
     borderRadius: Spacing.lg,
   },
-  primaryLink: {
+  text: {
     marginVertical: Spacing.md,
     borderRadius: Spacing.lg,
   },
-  secondaryLink: {
-    marginVertical: Spacing.md,
-    borderRadius: Spacing.lg,
-  },
-  noUnderline: {
-    marginVertical: Spacing.md,
-    borderRadius: Spacing.lg,
-  },
+  
 };
 
 const viewPresets = {
@@ -128,31 +121,17 @@ const viewPresets = {
     },
   ] as StyleProp<ViewStyle>,
   filled: [baseViewStyle] as StyleProp<ViewStyle>,
-  primaryLink: [{ marginHorizontal: Spacing.xs, marginVertical: Spacing.xs }] as StyleProp<ViewStyle>,
-  secondaryLink: [{ marginHorizontal: Spacing.xs, marginVertical: Spacing.xs }] as StyleProp<ViewStyle>,
-  noUnderline: [{ marginHorizontal: Spacing.xs, marginVertical: Spacing.xs, alignSelf: "center" }] as StyleProp<ViewStyle>,
-};
+  text: [{ marginHorizontal: Spacing.xs }] as StyleProp<ViewStyle>,
+ };
 
 const textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: [baseTextStyle, { color: colorPalette.primaryBg.primaryWhite, fontFamily: AppFont.bold }],
   filled: [baseTextStyle, { color: colorPalette.primaryBg.primaryWhite, fontFamily: AppFont.bold }],
-  primaryLink: [
+  text: [
     baseTextStyle,
     {
-      fontFamily: AppFont.regular,
-      textDecorationLine: "underline",
-      color: colorPalette.primaryBg.primaryOrange,
+      color: colorPalette.primaryBg.primaryBlack,
       fontSize: Fonts.size.sm,
     },
   ],
-  secondaryLink: [
-    baseTextStyle,
-    {
-      fontFamily: AppFont.regular,
-      textDecorationLine: "underline",
-      color: colorPalette.primaryBg.primaryWhite,
-      fontSize: Fonts.size.sm,
-    },
-  ],
-  noUnderline: { textDecorationLine: "none", color: colorPalette.primaryBg.primaryWhite },
 };

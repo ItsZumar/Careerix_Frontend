@@ -3,6 +3,11 @@ export interface SignupI {
   password: string;
 }
 
+export interface SigninI {
+  email: string;
+  password: string;
+}
+
 export interface ProfileSetupI {
   name: string;
   phoneNumber: string;

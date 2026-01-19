@@ -20,6 +20,10 @@ export const signinValidationSchema = yup.object().shape({
     .label("Password"),
 });
 
+export const forgotPasswordValidationSchema = yup.object().shape({
+  email: yup.string().required("Email address is required!").email("Please enter a valid email").label("Email Address"),
+});
+
 export const profileSetupValidationSchema = yup.object().shape({
   name: yup.string().min(2, "Name must be at least 2 characters").required("Name is required!").label("Name"),
   phoneNumber: yup

@@ -37,8 +37,8 @@ export const BackButton = ({
 
 const styles = StyleSheet.create({
   backButton: {
-    position: "absolute",
-    zIndex: 10,
+    // position: "absolute",
+    // zIndex: 10,
     minWidth: wp(10),
     minHeight: wp(10),
     borderRadius: wp(10),
