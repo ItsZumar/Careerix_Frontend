@@ -9,7 +9,7 @@ export * from "./common/Picker";
 export * from "./common/SearchBar";
 export * from "./common/SelectableChip";
 export * from "./common/TabIcon";
-export * from "./common/JobCard";
+export * from "./cards/JobCard";
 export * from "./common/SectionHeader";
 
 export * from "./layout/RippleWrapper";

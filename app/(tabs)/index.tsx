@@ -117,6 +117,26 @@ export default function HomeScreen() {
               />
             ))}
           </ScrollView>
+
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.scrollContent}
+          >
+            {suggestedJobs.map((job) => (
+              <JobCard
+                key={job.id}
+                companyName={job.companyName}
+                postedTime={job.postedTime}
+                jobTitle={job.jobTitle}
+                location={job.location}
+                workType={job.workType}
+                schedule={job.schedule}
+                applicationsCount={job.applicationsCount}
+                salaryRange={job.salaryRange}
+                onFavoritePress={handleFavoritePress}
+              />
+            ))}
+          </ScrollView>
         </View>
       </View>
     </ScreenWrapper>

@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { AppFont } from "@/utils";
 import { Spacing, colorPalette } from "@/styles";
-import { AppText } from "./AppText";
+import { AppText } from "../common/AppText";
 
 export interface JobCardProps {
   companyName: string;

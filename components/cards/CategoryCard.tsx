@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
       gap: 8, 
-      borderRadius: 16,
     },
     iconWrapper: {
-      borderRadius: 8,
       backgroundColor: colorPalette.primaryBg.primaryGrey,
       padding: wp(5),
+      borderRadius: wp(4),
+
     },
     label: {
       fontSize: 12,
