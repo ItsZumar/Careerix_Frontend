@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, TextInput, TouchableOpacity, Keyboard, NativeSyntheticEvent } from "react-native";
 import { router, type Href } from "expo-router";
+
+import { wp } from "@/utils";
 import { Screens } from "@/enum";
 import { LayoutStyles, Spacing, colorPalette, Fonts } from "@/styles";
 import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, Separator, SocialButton, BackButton } from "@/components";
-import { wp } from "@/utils";
 
 type OtpArray = [string, string, string, string];
 
@@ -77,16 +78,9 @@ const VerificationScreen = () => {
       console.log("OTP:", otpCode);
       // TODO: Verify OTP logic
       // After successful verification, navigate to profile setup
-      // router.push(Screens.ProfileSetup as Href);
+      router.push(Screens.CreateNewPassword as Href);
 
-      router.replace({
-        pathname: "/profile-setup-complete",
-        params: {
-          title: "Password Changed!",
-          description: "You're all set! Your account is now secure with your new password.",
-          buttonText: "Start Browsing",
-        },
-      });
+      // router.push(Screens.ProfileSetup as Href);
     }
   };
 
@@ -205,6 +199,4 @@ const styles = StyleSheet.create({
   resendActive: {
     color: colorPalette.primaryBg.primaryRed,
   },
- 
-  
 });

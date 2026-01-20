@@ -1,12 +1,13 @@
 import React from "react";
 import { View, StyleSheet, Keyboard } from "react-native";
 import { router, type Href } from "expo-router";
+
+import { wp } from "@/utils";
 import { Screens } from "@/enum";
 import { useFormikHook } from "@/hooks";
 import { forgotPasswordValidationSchema, hp } from "@/utils";
 import { colorPalette, LayoutStyles, Spacing } from "@/styles";
 import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, BackButton, SocialButton, Separator } from "@/components";
-import { wp } from "@/utils";
 
 interface ForgotPasswordI {
   email: string;

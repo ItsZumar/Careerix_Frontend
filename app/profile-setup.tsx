@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { View, StyleSheet, Keyboard, ScrollView } from "react-native";
 import { Image } from "expo-image";
 import { router } from "expo-router";
-import { LayoutStyles, Spacing, colorPalette } from "@/styles";
-import { AppText, ScreenWrapper, KeyboardResponsiveHOC, BackButton, TextInput, Picker, AppButton, EditProfileImageButton, SearchBar, SelectableChip } from "@/components";
+
 import { wp, hp } from "@/utils";
-import { profileImage } from "@/assets/images";
+import { Screens } from "@/enum";
+import { profileImage } from "@/assets";
 import { ProfileSetupI } from "@/interfaces";
 import { useFormikHook } from "@/hooks";
 import { profileSetupValidationSchema } from "@/utils";
+import { LayoutStyles, Spacing, colorPalette } from "@/styles";
 import {  JOB_CATEGORIES, profileTextInputFields, profilePickerFields, WORK_LOCATION_OPTIONS } from "@/constants";
+import { AppText, ScreenWrapper, KeyboardResponsiveHOC, BackButton, TextInput, Picker, AppButton, EditProfileImageButton, SearchBar, SelectableChip } from "@/components";
 
 const ProfileSetupScreen = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -33,7 +35,15 @@ const ProfileSetupScreen = () => {
       console.log("Profile setup data:", profileData);
       // TODO: Add API call for profile setup here
       // After successful submission, navigate to next screen
-      // router.replace("/(tabs)");
+      router.replace({
+        pathname: Screens.ProfileSetupComplete,
+        params: {
+          title: "Preferences Saved!",
+          description: "We've updated your preferences just the way you like them.",
+          buttonText: "Start Browsing",
+          icon: "notification",
+        },
+      });
     } catch (err) {
       console.log("error === ", err);
     }
@@ -49,14 +59,11 @@ const ProfileSetupScreen = () => {
     Keyboard.dismiss();
     
     if (currentStep === 1) {
-      // Validate step 1 form before proceeding
-      // Touch all fields to show errors
       setFieldTouched("name");
       setFieldTouched("phoneNumber");
       setFieldTouched("genderIdentity");
       setFieldTouched("roles");
       
-      // Check if form is valid
       const isFormValid = 
         values.name && 
         values.phoneNumber && 
@@ -71,18 +78,16 @@ const ProfileSetupScreen = () => {
         setCurrentStep(2);
       }
     } else if (currentStep === 2) {
-      // Move to step 3 (no validation needed, can skip)
       setCurrentStep(3);
     } else if (currentStep === 3) {
-      // Final step - submit all data
       await submit(values);
-      // Navigate to complete screen after successful submission
       router.replace({
-        pathname: "/profile-setup-complete",
+        pathname: Screens.ProfileSetupComplete,
         params: {
           title: "Preferences Saved!",
           description: "We've updated your preferences just the way you like them.",
           buttonText: "Start Browsing",
+          icon: "notification",
         },
       });
     }

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Keyboard } from "react-native";
 import { router, type Href } from "expo-router";
+
 import { Screens } from "@/enum";
 import { SigninI } from "@/interfaces";
 import { useFormikHook } from "@/hooks";
@@ -18,7 +19,7 @@ const SigninScreen = () => {
       console.log(email, password);
       // TODO: Add API call for signin here
       // After successful signin, navigate to home page
-      router.replace("/(tabs)");
+      router.push(Screens.Home as Href);
     } catch (err) {
       console.log("error === ", err);
     }
