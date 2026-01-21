@@ -85,7 +85,10 @@ export const JobCard = ({
       </View>
 
       <View style={styles.bottomSection}>
-        <AppText text={`${applicationsCount} Applied`} type="description" />
+        <View style={styles.applicationsContainer}>
+          <AppText text={`${applicationsCount}`} type="description" />
+          <AppText text="Applied" type="description" />
+        </View>
         <View style={styles.salaryContainer}>
           <Ionicons name="cash-outline" size={20} color={colorPalette.primaryBg.primaryBlack} />
           <AppText text={salaryRange} type="description" />
@@ -143,6 +146,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  applicationsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
   },
   salaryContainer: {
     flexDirection: "row",

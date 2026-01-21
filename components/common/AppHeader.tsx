@@ -38,7 +38,7 @@ export const AppHeader = ({
     if (title) {
       return (
         <View style={[styles.titleContainer, titleStyle]}>
-          <AppText text={title} type="title" />
+          <AppText text={title} type="heading" />
         </View>
       );
     }

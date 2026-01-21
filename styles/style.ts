@@ -5,6 +5,7 @@ import { hp, wp } from "@/utils/responsive";
 
 export const colorPalette = {
   primaryBg: {
+    primaryYellow: "#FFA800",
     primaryOrange: "#FF6600",
     primaryBlack: "#000000",
     primaryGrey: "#F5F5F4",
@@ -86,7 +87,7 @@ export const Typography = StyleSheet.create({
     fontSize: Fonts.size.xl,
     letterSpacing: 0.1,
     color: colorPalette.primaryBg.primaryBlack,
-    fontFamily: AppFont.semiBold,
+    fontFamily: AppFont.bold,
   },
   primaryHeading: {
     fontSize: Fonts.size.md,

@@ -41,6 +41,16 @@
         }
       ]
     ],
+    "fonts": [
+      "./assets/fonts/Mulish-Regular.ttf",
+      "./assets/fonts/Mulish-Medium.ttf",
+      "./assets/fonts/Mulish-Bold.ttf",
+      "./assets/fonts/Mulish-SemiBold.ttf",
+      "./assets/fonts/Mulish-Light.ttf",
+      "./assets/fonts/Mulish-ExtraLight.ttf",
+      "./assets/fonts/Mulish-ExtraBold.ttf",
+      "./assets/fonts/Mulish-Black.ttf"
+    ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
