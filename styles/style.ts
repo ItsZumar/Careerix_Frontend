@@ -148,7 +148,7 @@ export const FormsStyle = StyleSheet.create({
 export const LayoutStyles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    paddingTop: wp(10),
+    paddingTop: Spacing.lg,
   },
   headerNavContainer: {
     flexDirection: "row",

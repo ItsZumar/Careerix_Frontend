@@ -5,7 +5,7 @@ import { router, type Href } from "expo-router";
 import { wp } from "@/utils";
 import { Screens } from "@/enum";
 import { LayoutStyles, Spacing, colorPalette, Fonts } from "@/styles";
-import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, Separator, SocialButton, BackButton } from "@/components";
+import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, Separator, SocialButton, CircleButton } from "@/components";
 
 type OtpArray = [string, string, string, string];
 
@@ -94,7 +94,7 @@ const VerificationScreen = () => {
     <ScreenWrapper style={LayoutStyles.horizontalSpacing}>
       <KeyboardResponsiveHOC containerStyle={styles.container}>
       <View style={styles.headerContainer}>
-            <BackButton />
+            <CircleButton />
           </View>
 
         <View style={styles.content}>

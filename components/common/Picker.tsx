@@ -51,11 +51,13 @@ export const Picker: React.FC<PickerI> = ({
         style={[FormsStyle.formControl, styles.pickerButton]}
         onPress={() => setIsOpen(true)}
       >
-        <AppText
-          text={selectedOption ? selectedOption.label : placeholder}
-          type="default"
-          style={[styles.pickerText, !selectedOption && styles.placeholderText]}
-        />
+        <View style={styles.textContainer}>
+          <AppText
+            text={selectedOption ? selectedOption.label : placeholder}
+            type="default"
+            style={[styles.pickerText, !selectedOption && styles.placeholderText]}
+          />
+        </View>
         <Ionicons name="chevron-down" size={iconSize} color={colorPalette.primaryBg.secondaryGrey} />
       </TouchableOpacity>
 
@@ -89,9 +91,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: Spacing.md,
+    minHeight: 50,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: "center",
   },
   pickerText: {
-    flex: 1,
     color: colorPalette.primaryBg.primaryBlack,
   },
   placeholderText: {

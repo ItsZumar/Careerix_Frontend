@@ -7,7 +7,7 @@ import { Screens } from "@/enum";
 import { useFormikHook } from "@/hooks";
 import { forgotPasswordValidationSchema, hp } from "@/utils";
 import { colorPalette, LayoutStyles, Spacing } from "@/styles";
-import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, BackButton, SocialButton, Separator } from "@/components";
+import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, CircleButton, SocialButton, Separator } from "@/components";
 
 interface ForgotPasswordI {
   email: string;
@@ -37,7 +37,7 @@ const ForgotPasswordScreen = () => {
         <View style={styles.form}>
 
           <View style={styles.headerContainer}>
-            <BackButton />
+            <CircleButton />
           </View>
 
           <View style={styles.inputContainer}>

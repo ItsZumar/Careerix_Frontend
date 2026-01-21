@@ -19,7 +19,6 @@ export * from "./layout/ScreenWrapper";
 export * from "./buttons/SocialButton";
 export * from "./buttons/BackButton";
 export * from "./buttons/EditProfileImageButton";
-export * from "./buttons/BackButton";
 
 export * from "./modals/BottomModal";
 

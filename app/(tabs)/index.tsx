@@ -1,19 +1,21 @@
 "use client";
 
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView, FlatList,  } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
+import { router, type Href } from "expo-router";
 
 import { wp } from "@/utils";
+import { Screens } from "@/enum";
 import { Spacing } from "@/styles";
-import { profileImage } from "@/assets";
+import { profileImage, filterIcon } from "@/assets";
 import { suggestedJobs, categories } from "@/constants";
 import { LayoutStyles, colorPalette } from "@/styles";
 import {
   ScreenWrapper,
   AppHeader,
-  BackButton,
+  CircleButton,
   AppText,
   SearchBar,
   JobCard,
@@ -24,11 +26,6 @@ import {
 const ICON_SIZE = 20;
 
 export default function HomeScreen() {
-  const handleSearch = (text: string) => {
-    // TODO: Implement search functionality
-    console.log("Search:", text);
-  };
-
   const handleFavoritePress = (isFavorited: boolean) => {
     // TODO: Implement favorite functionality
     console.log("Favorite:", isFavorited);
@@ -60,7 +57,86 @@ export default function HomeScreen() {
   );
 
   const renderHeaderRightAccessory = () => (
-    <BackButton iconName="notifications-outline" />
+    <CircleButton
+      iconName="notifications-outline"
+      onPress={() => router.push(Screens.Notifications as Href)}
+    />
+  );
+
+  const renderSuggestedJobCard = (job: (typeof suggestedJobs)[number]) => (
+    <JobCard
+      companyName={job.companyName}
+      postedTime={job.postedTime}
+      jobTitle={job.jobTitle}
+      location={job.location}
+      workType={job.workType}
+      schedule={job.schedule}
+      applicationsCount={job.applicationsCount}
+      salaryRange={job.salaryRange}
+      onFavoritePress={handleFavoritePress}
+      onPress={() =>
+        router.push({
+          pathname: Screens.JobDetail,
+          params: { id: job.id },
+        } as Href)
+      }
+    />
+  );
+
+  const renderListHeader = () => (
+    <View style={styles.container}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => router.push(Screens.JobSearch as Href)}
+      >
+        <SearchBar
+          placeholder="Search for jobs"
+          editable={false}
+          containerStyle={{ pointerEvents: "none" }}
+          rightIcon={filterIcon}
+        />
+      </TouchableOpacity>
+
+      <View style={styles.jobSection}>
+        <SectionHeader title="Suggested Jobs" />
+        <FlatList
+          horizontal
+          data={suggestedJobs}
+          keyExtractor={(item) => item.id}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+          renderItem={({ item }) => (
+            <View>
+              {renderSuggestedJobCard(item)}
+            </View>
+          )}
+        />
+      </View>
+
+      <View style={styles.categorySection}>
+        <SectionHeader
+          title="Categories"
+          showSeeAll
+          onPressSeeAll={handleSeeAllCategories}
+        />
+        <FlatList
+          horizontal
+          data={categories}
+          keyExtractor={(item) => item.label}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+          renderItem={({ item }) => (
+            <CategoryCard icon={item.icon} label={item.label} />
+          )}
+        />
+      </View>
+    </View>
+  );
+
+  const renderJobItem = ({ item }: { item: (typeof suggestedJobs)[number] }) => (
+    <View>
+      {renderSuggestedJobCard(item)}
+    </View>
   );
 
   return (
@@ -71,74 +147,14 @@ export default function HomeScreen() {
         rightAccessory={renderHeaderRightAccessory()}
       />
 
-      <View style={styles.container}>
-        <SearchBar placeholder="Search for jobs" onChangeText={handleSearch} />
-
-        <View style={styles.jobSection}>
-          <SectionHeader title="Suggested Jobs" />
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.scrollContent}
-          >
-            {suggestedJobs.map((job) => (
-              <JobCard
-                key={job.id}
-                companyName={job.companyName}
-                postedTime={job.postedTime}
-                jobTitle={job.jobTitle}
-                location={job.location}
-                workType={job.workType}
-                schedule={job.schedule}
-                applicationsCount={job.applicationsCount}
-                salaryRange={job.salaryRange}
-                onFavoritePress={handleFavoritePress}
-              />
-            ))}
-          </ScrollView>
-        </View>
-
-        <View style={styles.categorySection}>
-          <SectionHeader
-            title="Categories"
-            showSeeAll={true}
-            onPressSeeAll={handleSeeAllCategories}
-          />
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.scrollContent}
-          >
-            {categories.map((category) => (
-              <CategoryCard
-                key={category.label}
-                icon={category.icon}
-                label={category.label}
-              />
-            ))}
-          </ScrollView>
-
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.scrollContent}
-          >
-            {suggestedJobs.map((job) => (
-              <JobCard
-                key={job.id}
-                companyName={job.companyName}
-                postedTime={job.postedTime}
-                jobTitle={job.jobTitle}
-                location={job.location}
-                workType={job.workType}
-                schedule={job.schedule}
-                applicationsCount={job.applicationsCount}
-                salaryRange={job.salaryRange}
-                onFavoritePress={handleFavoritePress}
-              />
-            ))}
-          </ScrollView>
-        </View>
-      </View>
+      <FlatList
+        data={suggestedJobs}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={renderListHeader}
+        renderItem={renderJobItem}
+        contentContainerStyle={styles.listContent}
+      />
     </ScreenWrapper>
   );
 }
@@ -146,12 +162,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: Spacing.lg,
   },
   profileImage: {
-    width: wp(10),
-    height: wp(10),
-    borderRadius: wp(5),
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
   },
   middleAccessory: {
     alignItems: "center",
@@ -173,8 +188,12 @@ const styles = StyleSheet.create({
     gap: Spacing.sm,
   },
   scrollContent: {
-    paddingHorizontal: wp(0.1),
+    paddingHorizontal: wp(.5),
     paddingVertical: wp(0.5),
     gap: Spacing.md,
+  },
+  listContent: {
+    paddingBottom: Spacing.lg,
+    paddingHorizontal: wp(0.5),
   },
 });

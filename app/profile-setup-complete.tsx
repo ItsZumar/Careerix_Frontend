@@ -30,7 +30,7 @@ const ProfileSetupCompleteScreen = () => {
   const iconSource = params.icon ? iconMap[params.icon] || notificationIcon : notificationIcon;
   
   const handleStartBrowsing = () => {
-    router.push(Screens.Home as Href);
+    router.push(Screens.TabsRoot as Href);
   };
 
   return (

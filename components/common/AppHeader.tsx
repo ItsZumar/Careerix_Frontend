@@ -1,9 +1,10 @@
 import React, { ReactNode } from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 
+import { wp } from "@/utils";
 import { AppText } from "./AppText";
-import { BackButton } from "../buttons/BackButton";
-import { colorPalette } from "@/styles";
+import { CircleButton } from "../buttons/BackButton";
+import { colorPalette, Spacing } from "@/styles";
 
 interface AppHeaderProps {
   title?: string;
@@ -28,7 +29,7 @@ export const AppHeader = ({
 }: AppHeaderProps) => {
   const renderLeftAccessory = () => {
     if (leftAccessory) return leftAccessory;
-    if (showBackButton) return <BackButton onPress={onBackPress} />;
+    if (showBackButton) return <CircleButton onPress={onBackPress} iconSize={wp(6)}/>;
     return null;
   };
 
@@ -61,6 +62,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: colorPalette.primaryBg.primaryWhite,
+    paddingBottom: Spacing.md,
+    
   },
   leftSection: {
     flex: 1,

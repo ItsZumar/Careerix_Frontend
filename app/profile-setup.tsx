@@ -11,7 +11,7 @@ import { useFormikHook } from "@/hooks";
 import { profileSetupValidationSchema } from "@/utils";
 import { LayoutStyles, Spacing, colorPalette } from "@/styles";
 import {  JOB_CATEGORIES, profileTextInputFields, profilePickerFields, WORK_LOCATION_OPTIONS } from "@/constants";
-import { AppText, ScreenWrapper, KeyboardResponsiveHOC, BackButton, TextInput, Picker, AppButton, EditProfileImageButton, SearchBar, SelectableChip } from "@/components";
+import { AppText, ScreenWrapper, KeyboardResponsiveHOC, CircleButton, TextInput, Picker, AppButton, EditProfileImageButton, SearchBar, SelectableChip } from "@/components";
 
 const ProfileSetupScreen = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -249,7 +249,7 @@ const ProfileSetupScreen = () => {
       <KeyboardResponsiveHOC containerStyle={styles.container}>
 
         <View style={styles.headerContainer}>
-          <BackButton onPress={handleBack} />
+          <CircleButton onPress={handleBack} />
           <View style={styles.progressContainer}>
             {[1, 2, 3].map((step) => (
               <View

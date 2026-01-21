@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { AppFont } from "@/utils";
+import { AppFont, wp } from "@/utils";
 import { Spacing, colorPalette } from "@/styles";
 import { AppText } from "../common/AppText";
 
@@ -17,6 +17,7 @@ export interface JobCardProps {
   salaryRange: string;
   onFavoritePress?: (isFavorited: boolean) => void;
   initialFavorited?: boolean;
+  onPress?: () => void;
 }
 
 export const JobCard = ({
@@ -30,6 +31,7 @@ export const JobCard = ({
   salaryRange,
   onFavoritePress,
   initialFavorited = false,
+  onPress,
 }: JobCardProps) => {
   const [isFavorited, setIsFavorited] = useState(initialFavorited);
 
@@ -49,7 +51,11 @@ export const JobCard = ({
   );
 
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      activeOpacity={0.9}
+      style={styles.card}
+      onPress={onPress}
+    >
       <View style={styles.topSection}>
         <View style={styles.companyNameContainer}>
           <AppText text={companyName} type="subHeading" />
@@ -59,7 +65,11 @@ export const JobCard = ({
           <Ionicons
             name={isFavorited ? "heart" : "heart-outline"}
             size={20}
-            color={colorPalette.primaryBg.primaryBlack}
+            color={
+              isFavorited
+                ? colorPalette.primaryBg.primaryRed
+                : colorPalette.primaryBg.primaryBlack
+            }
           />
         </TouchableOpacity>
       </View>
@@ -81,14 +91,14 @@ export const JobCard = ({
           <AppText text={salaryRange} type="description" />
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colorPalette.primaryBg.primaryWhite,
-    borderRadius: 8,
+    backgroundColor: colorPalette.primaryBg.tertiary,
+    borderRadius: wp(4),
     padding: Spacing.md,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },

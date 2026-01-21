@@ -23,7 +23,9 @@ export default function RootLayout() {
         <Stack.Screen name="auth/create-new-password" options={{ headerShown: false }} />
         <Stack.Screen name="profile-setup" options={{ headerShown: false }} />
         <Stack.Screen name="profile-setup-complete" options={{ headerShown: false }} />
-        
+        <Stack.Screen name="notifications" options={{ headerShown: false }} />
+        <Stack.Screen name="job-search" options={{ headerShown: false }} />
+        <Stack.Screen name="job/job-detail" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

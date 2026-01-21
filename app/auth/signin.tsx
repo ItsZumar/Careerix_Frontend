@@ -19,7 +19,7 @@ const SigninScreen = () => {
       console.log(email, password);
       // TODO: Add API call for signin here
       // After successful signin, navigate to home page
-      router.push(Screens.Home as Href);
+      router.push(Screens.TabsRoot as Href);
     } catch (err) {
       console.log("error === ", err);
     }

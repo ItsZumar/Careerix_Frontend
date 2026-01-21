@@ -8,7 +8,7 @@ import { Screens } from "@/enum";
 import { useFormikHook } from "@/hooks";
 import { createNewPasswordValidationSchema } from "@/utils";
 import { colorPalette, LayoutStyles, Spacing, iconSize } from "@/styles";
-import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, BackButton } from "@/components";
+import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, CircleButton } from "@/components";
 
 interface CreateNewPasswordI {
   password: string;
@@ -76,7 +76,7 @@ const CreateNewPasswordScreen = () => {
       <KeyboardResponsiveHOC containerStyle={styles.container}>
         <View style={styles.form}>
           <View style={styles.headerContainer}>
-            <BackButton />
+            <CircleButton />
           </View>
 
           <View style={styles.inputContainer}>

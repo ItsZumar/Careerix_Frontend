@@ -49,3 +49,53 @@ export const categories = [
   { icon: UsersIcon, label: "Tuition" },
   { icon: DeliveryIcon, label: "Delivery" },
 ];
+
+export interface PickerOption {
+  label: string;
+  value: string;
+}
+
+export const jobTypeFilterOptions: PickerOption[] = [
+  { label: "All Types", value: "all-types" },
+  { label: "Full-time", value: "full-time" },
+  { label: "Part-time", value: "part-time" },
+  { label: "Contract", value: "contract" },
+  { label: "Freelance", value: "freelance" },
+  { label: "Internship", value: "internship" },
+];
+
+export const datePostedFilterOptions: PickerOption[] = [
+  { label: "Any Time", value: "any-time" },
+  { label: "Last 24 hours", value: "24h" },
+  { label: "Last 3 days", value: "3d" },
+  { label: "Last week", value: "1w" },
+  { label: "Last 2 weeks", value: "2w" },
+  { label: "Last month", value: "1m" },
+];
+
+export const salaryFilterOptions: PickerOption[] = [
+  { label: "Any Salary", value: "any-salary" },
+  { label: "$0 - $25,000", value: "0-25k" },
+  { label: "$25,000 - $50,000", value: "25k-50k" },
+  { label: "$50,000 - $75,000", value: "50k-75k" },
+  { label: "$75,000 - $100,000", value: "75k-100k" },
+  { label: "$100,000+", value: "100k+" },
+];
+
+export const locationFilterOptions: PickerOption[] = [
+  { label: "All Locations", value: "all-locations" },
+  { label: "Remote", value: "remote" },
+  { label: "On-site", value: "onsite" },
+  { label: "Hybrid", value: "hybrid" },
+  { label: "New York", value: "new-york" },
+  { label: "Los Angeles", value: "los-angeles" },
+  { label: "Chicago", value: "chicago" },
+  { label: "Houston", value: "houston" },
+];
+
+export const FILTER_CONFIG = [
+  { id: "jobType", placeholder: "Job Type", options: jobTypeFilterOptions },
+  { id: "datePosted", placeholder: "Date Posted", options: datePostedFilterOptions },
+  { id: "salary", placeholder: "Salary", options: salaryFilterOptions },
+  { id: "location", placeholder: "Location", options: locationFilterOptions },
+] as const;
