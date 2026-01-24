@@ -32,6 +32,7 @@ const CreateNewPasswordScreen = () => {
           description: "You're all set! Your account is now secure with your new password.",
           buttonText: "Start Browsing",
           icon: "passwordChanged",
+          buttonScreen: Screens.TabsRoot,
         },
       });
     } catch (err) {

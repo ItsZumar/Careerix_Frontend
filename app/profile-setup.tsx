@@ -42,6 +42,7 @@ const ProfileSetupScreen = () => {
           description: "We've updated your preferences just the way you like them.",
           buttonText: "Start Browsing",
           icon: "notification",
+          buttonScreen: Screens.TabsRoot,
         },
       });
     } catch (err) {
@@ -88,6 +89,7 @@ const ProfileSetupScreen = () => {
           description: "We've updated your preferences just the way you like them.",
           buttonText: "Start Browsing",
           icon: "notification",
+          buttonScreen: Screens.TabsRoot,
         },
       });
     }
@@ -332,9 +334,13 @@ const styles = StyleSheet.create({
   },
   genderPickerContainer: {
     flex: 2,
+    marginBottom: Spacing.md,
+
   },
   rolesPickerContainer: {
     flex: 3,
+    marginBottom: Spacing.md,
+
   },
   buttonContainer: {
     paddingTop: Spacing.md,

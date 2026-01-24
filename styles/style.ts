@@ -15,6 +15,7 @@ export const colorPalette = {
     quinary: "#79716B",
     tertiary: "#FAFAF9",
     primary: "#1C1917",
+    senary: "rgba(255, 255, 255, 0.4)",
 
     primaryWhite: "#ffffff",
     primaryRed: "#FD2828FF",
@@ -120,7 +121,7 @@ export const Typography = StyleSheet.create({
     fontFamily: AppFont.bold,
   },
   errorText: {
-    fontSize: Fonts.size.sm,
+    fontSize: Fonts.size.xs,
     fontFamily: AppFont.regular,
     color: colorPalette.primaryBg.primaryRed,
   },
@@ -165,7 +166,7 @@ export const LayoutStyles = StyleSheet.create({
     height: wp(6.5),
   },
   horizontalSpacing: {
-    paddingHorizontal: Spacing.lg,
+    paddingHorizontal: Spacing.md,
   },
   positionCenter: {
     alignItems: "center",

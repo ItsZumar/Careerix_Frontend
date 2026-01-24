@@ -15,3 +15,4 @@ export const arrangeIcon = require("./images/arrange.svg");
 export const peopleIcon = require("./images/people.svg");
 export const startDateIcon = require("./images/startDate.svg");
 export const endDateIcon = require("./images/endDate.svg");
+export const taskDoneIcon = require("./images/taskDone.svg");

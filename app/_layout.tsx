@@ -43,6 +43,7 @@ export default function RootLayout() {
         <Stack.Screen name="notifications" options={{ headerShown: false }} />
         <Stack.Screen name="job-search" options={{ headerShown: false }} />
         <Stack.Screen name="job/job-detail" options={{ headerShown: false }} />
+        <Stack.Screen name="job/job-apply" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

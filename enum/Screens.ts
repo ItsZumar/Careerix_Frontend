@@ -26,4 +26,5 @@ export enum Screens {
   Notifications = "/notifications",
   JobSearch = "/job-search",
   JobDetail = "/job/job-detail",
+  JobApply = "/job/job-apply",
 }

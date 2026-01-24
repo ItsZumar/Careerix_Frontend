@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { AppText } from '../common/AppText'
 import { wp } from '@/utils'
 import { colorPalette } from '@/styles'
@@ -7,16 +7,17 @@ import { colorPalette } from '@/styles'
 type CategoryCardProps = {
   icon: React.ComponentType<{ size?: number; color?: string }>
   label: string
+  onPress?: () => void
 }
 
-export const CategoryCard = ({ icon: Icon, label }: CategoryCardProps) => {
+export const CategoryCard = ({ icon: Icon, label, onPress }: CategoryCardProps) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
       <View style={styles.iconWrapper}>
         <Icon size={24} color={colorPalette.primaryBg.primaryBlack} />
       </View>
       <AppText text={label} type="description" />
-    </View>
+    </TouchableOpacity>
   )
 }
 

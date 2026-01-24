@@ -56,12 +56,13 @@ export function AppButton(props: ButtonProps) {
 
   return (
     <RippleWrapper
-      onPress={onPress}
-      style={isGradientPreset ? undefined : getViewStyle()}
-      rippleColor={isGradientPreset ? colorPalette.primaryBg.primaryOrange : colorPalette.primaryBg.transparent}
-      containerStyle={getContainerStyle()}
-    >
-      {isGradientPreset ? (
+    onPress={onPress}
+    // Apply preset styles here
+    style={isGradientPreset ? undefined : getViewStyle()} 
+    rippleColor={isGradientPreset ? colorPalette.primaryBg.primaryOrange : colorPalette.primaryBg.transparent}
+    containerStyle={getContainerStyle()}
+  >
+     {isGradientPreset ? (
         <LinearGradient
           colors={["#FF8533", colorPalette.primaryBg.primaryOrange]}
           start={{ x: 0, y: 0 }}
@@ -71,7 +72,9 @@ export function AppButton(props: ButtonProps) {
           {buttonContent}
         </LinearGradient>
       ) : (
-        <View style={getViewStyle()}>{buttonContent}</View>
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+        {buttonContent}
+      </View>
       )}
     </RippleWrapper>
   );
@@ -85,6 +88,7 @@ const baseViewStyle: ViewStyle = {
   alignItems: "center",
   paddingVertical: Spacing.sm,
   overflow: "hidden",
+
 };
 
 const baseTextStyle: TextStyle = {
@@ -109,7 +113,11 @@ const containerPresets = {
     marginVertical: Spacing.md,
     borderRadius: Spacing.lg,
   },
-  
+  outline: {
+    marginVertical: Spacing.md,
+    borderRadius: 0,
+    overflow: "visible" as const,
+  },
 };
 
 const viewPresets = {
@@ -122,7 +130,16 @@ const viewPresets = {
   ] as StyleProp<ViewStyle>,
   filled: [baseViewStyle] as StyleProp<ViewStyle>,
   text: [{ marginHorizontal: Spacing.xs }] as StyleProp<ViewStyle>,
- };
+  outline: [
+    baseViewStyle,
+    {
+      borderWidth: 1,
+      borderColor: colorPalette.primaryBg.primaryOrange,
+      backgroundColor: colorPalette.primaryBg.primaryWhite,
+      overflow: "hidden" as const,
+    },
+  ] as StyleProp<ViewStyle>,
+};
 
 const textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: [baseTextStyle, { color: colorPalette.primaryBg.primaryWhite, fontFamily: AppFont.bold }],
@@ -134,4 +151,5 @@ const textPresets: Record<Presets, StyleProp<TextStyle>> = {
       fontSize: Fonts.size.sm,
     },
   ],
+  outline: [baseTextStyle, { color: colorPalette.primaryBg.primaryOrange, fontFamily: AppFont.bold }],
 };

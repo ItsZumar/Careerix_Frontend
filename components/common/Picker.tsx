@@ -84,7 +84,7 @@ export const Picker: React.FC<PickerI> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: Spacing.md,
+    // marginBottom: Spacing.md,
   },
   pickerButton: {
     flexDirection: "row",

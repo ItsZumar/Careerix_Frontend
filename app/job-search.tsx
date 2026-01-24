@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
   },
   pickerItem: {
     minWidth: wp(22),
+    marginBottom: Spacing.md,
   },
   resultsContainer: {
     flex: 1,
