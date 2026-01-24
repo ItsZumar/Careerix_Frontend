@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, TextInput, TouchableOpacity, Keyboard, NativeSyntheticEvent } from "react-native";
 import { router, type Href } from "expo-router";
+
+import { wp } from "@/utils";
 import { Screens } from "@/enum";
 import { LayoutStyles, Spacing, colorPalette, Fonts } from "@/styles";
-import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, Separator, SocialButton, BackButton } from "@/components";
-import { wp } from "@/utils";
+import { AppButton, AppText, ScreenWrapper, KeyboardResponsiveHOC, Separator, SocialButton, CircleButton } from "@/components";
 
 type OtpArray = [string, string, string, string];
 
@@ -77,7 +78,9 @@ const VerificationScreen = () => {
       console.log("OTP:", otpCode);
       // TODO: Verify OTP logic
       // After successful verification, navigate to profile setup
-      router.push(Screens.ProfileSetup as Href);
+      router.push(Screens.CreateNewPassword as Href);
+
+      // router.push(Screens.ProfileSetup as Href);
     }
   };
 
@@ -90,7 +93,9 @@ const VerificationScreen = () => {
   return (
     <ScreenWrapper style={LayoutStyles.horizontalSpacing}>
       <KeyboardResponsiveHOC containerStyle={styles.container}>
-        <BackButton />
+      <View style={styles.headerContainer}>
+            <CircleButton />
+          </View>
 
         <View style={styles.content}>
           <View style={styles.titleContainer}>
@@ -144,6 +149,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  headerContainer: {
+    alignItems: "flex-start",
+  },
   content: {
     flex: 1,
     paddingTop: Spacing.xxl + Spacing.xxl,
@@ -191,6 +199,4 @@ const styles = StyleSheet.create({
   resendActive: {
     color: colorPalette.primaryBg.primaryRed,
   },
- 
-  
 });

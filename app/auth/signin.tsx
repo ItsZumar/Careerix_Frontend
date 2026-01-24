@@ -1,16 +1,13 @@
 import React from "react";
 import { View, StyleSheet, Keyboard } from "react-native";
 import { router, type Href } from "expo-router";
-import { Screens } from "@/enum";
-import { useFormikHook } from "@/hooks/useFormik";
-import { signinValidationSchema } from "@/utils/validations";
-import { LayoutStyles, Spacing } from "../../styles";
-import { AppButton, AppLogo, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput } from "@/components";
 
-interface SigninI {
-  email: string;
-  password: string;
-}
+import { Screens } from "@/enum";
+import { SigninI } from "@/interfaces";
+import { useFormikHook } from "@/hooks";
+import { signinValidationSchema } from "@/utils";
+import { colorPalette, LayoutStyles, Spacing } from "@/styles";
+import { AppButton, AppLogo, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, SocialButton, Separator } from "@/components";
 
 const SigninScreen = () => {
   const validationSchema = signinValidationSchema;
@@ -20,7 +17,9 @@ const SigninScreen = () => {
     try {
       Keyboard.dismiss();
       console.log(email, password);
-      // TODO: Add signin logic here
+      // TODO: Add API call for signin here
+      // After successful signin, navigate to home page
+      router.push(Screens.TabsRoot as Href);
     } catch (err) {
       console.log("error === ", err);
     }
@@ -40,33 +39,49 @@ const SigninScreen = () => {
           <View style={styles.inputContainer}>
             <View style={styles.title}>
               <AppText text="Welcome Back" type="title" />
-              <AppText text="Sign in to your account" type="label" />
+              <AppText text="Sign in to your account" type="default" />
             </View>
 
             <TextInput
-              placeholder="Enter Your Email Address"
+              placeholder="Enter Email Address"
               value={values.email}
               onChangeText={handleChange("email")}
               onBlur={() => setFieldTouched("email")}
               error={typeof errors.email === "string" ? errors.email : undefined}
               visible={typeof touched.email === "boolean" ? touched.email : undefined}
+              leftIcon="mail-outline"
             />
             <TextInput
-              placeholder="Enter Your Password"
+              placeholder="Enter Password"
               value={values.password}
               onChangeText={handleChange("password")}
               onBlur={() => setFieldTouched("password")}
               error={typeof errors.password === "string" ? errors.password : undefined}
               visible={typeof touched.password === "boolean" ? touched.password : undefined}
               secureInput={true}
+              leftIcon="lock-closed-outline"
             />
 
             <AppButton text="Sign In" onPress={handleSubmit} />
 
             <View style={styles.linkRow}>
-              <AppText text="Don't have an account?" type="label" />
-              <AppButton text="Sign Up" onPress={() => router.push(Screens.Signup as Href)} preset="primaryLink" />
+              <AppButton 
+                text="Create an Account" 
+                preset="text" 
+                onPress={() => router.push(Screens.Signup as Href)} 
+              />
+
+              <AppButton 
+                text="Forgot Password?" 
+                preset="text" 
+                onPress={() => router.push(Screens.ForgotPassword as Href)} 
+              />
             </View>
+
+            <Separator text="OR" />
+
+            <SocialButton type="google" onPress={() => console.log("Google login")} />
+            <SocialButton type="apple" onPress={() => console.log("Apple login")} />
           </View>
         </View>
       </KeyboardResponsiveHOC>
@@ -79,18 +94,21 @@ export default SigninScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: colorPalette.primaryBg.primaryWhite,
   },
   logoContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: Spacing.sm,
-    marginBottom: Spacing.xl,
+    paddingTop: Spacing.xxs,
+    marginBottom: Spacing.xxl,
   },
   title: {
     paddingVertical: Spacing.md,
     alignSelf: "center",
+    alignItems: "center",
+    marginBottom: Spacing.xxl + Spacing.xxl,
   },
   form: {
     paddingTop: Spacing.sm,
@@ -101,9 +119,6 @@ const styles = StyleSheet.create({
   },
   linkRow: {
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: Spacing.xs,
-    marginTop: Spacing.md,
+    justifyContent: "space-between",
   },
 });

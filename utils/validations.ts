@@ -20,6 +20,24 @@ export const signinValidationSchema = yup.object().shape({
     .label("Password"),
 });
 
+export const forgotPasswordValidationSchema = yup.object().shape({
+  email: yup.string().required("Email address is required!").email("Please enter a valid email").label("Email Address"),
+});
+
+export const createNewPasswordValidationSchema = yup.object().shape({
+  password: yup
+    .string()
+    .required("Password is required!")
+    .matches(/^(?=.*[1-9])(?=.*[a-zA-Z])(?=.{8,})/, "Password must contain at least 8 characters, 1 number (1-9), and 1 letter")
+    .min(8, "Password must be at least 8 characters")
+    .label("Password"),
+  confirmPassword: yup
+    .string()
+    .required("Please confirm your password!")
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .label("Confirm Password"),
+});
+
 export const profileSetupValidationSchema = yup.object().shape({
   name: yup.string().min(2, "Name must be at least 2 characters").required("Name is required!").label("Name"),
   phoneNumber: yup

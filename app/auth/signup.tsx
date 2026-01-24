@@ -1,11 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Keyboard } from "react-native";
 import { router, type Href } from "expo-router";
+
 import { Screens } from "@/enum";
 import { SignupI } from "@/interfaces";
 import { useFormikHook } from "@/hooks";
 import { signupValidationSchema } from "@/utils";
-import { colorPalette, Fonts, LayoutStyles, Spacing, Typography } from "@/styles";
+import { colorPalette, LayoutStyles, Spacing } from "@/styles";
 import { AppButton, AppLogo, AppText, ScreenWrapper, KeyboardResponsiveHOC, TextInput, SocialButton, Separator } from "@/components";
 
 const SignupScreen = () => {
@@ -64,7 +65,11 @@ const SignupScreen = () => {
             <AppButton text="Create an Account" onPress={handleSubmit} />
 
             <View style={styles.linkRow}>
-              <AppText text="I already have an account?" type="default" />
+              <AppButton 
+                text="I already have an account?" 
+                preset="text" 
+                onPress={() => router.push(Screens.Signin as Href)} 
+              />
             </View>
 
             <Separator text="OR" />

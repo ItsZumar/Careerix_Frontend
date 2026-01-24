@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { colorPalette, Spacing } from "@/styles";
 import { wp } from "@/utils";
 
-interface BackButtonProps {
+interface CircleButtonProps {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   iconName?: keyof typeof Ionicons.glyphMap;
@@ -13,13 +13,13 @@ interface BackButtonProps {
   iconColor?: string;
 }
 
-export const BackButton = ({
+export const CircleButton = ({
   onPress,
   style,
   iconName = "chevron-back",
   iconSize = 29,
   iconColor = colorPalette.primaryBg.primary,
-}: BackButtonProps) => {
+}: CircleButtonProps) => {
   const handlePress = () => {
     if (onPress) {
       onPress();
@@ -37,8 +37,8 @@ export const BackButton = ({
 
 const styles = StyleSheet.create({
   backButton: {
-    position: "absolute",
-    zIndex: 10,
+    // position: "absolute",
+    // zIndex: 10,
     minWidth: wp(10),
     minHeight: wp(10),
     borderRadius: wp(10),

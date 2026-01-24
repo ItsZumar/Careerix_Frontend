@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { colorPalette, Spacing } from "@/styles";
 import { AppText } from "../common/AppText";
 import { wp } from "@/utils";
+import { googleIcon } from "@/assets";
 
 interface SocialButtonProps {
   type: "google" | "apple";
@@ -21,7 +22,7 @@ export const SocialButton = ({ type, onPress, style }: SocialButtonProps) => {
     if (type === "google") {
       return (
         <Image
-          source={require("../../assets/Google.png")}
+          source={googleIcon}
           style={styles.googleLogo}
           contentFit="contain"
         />

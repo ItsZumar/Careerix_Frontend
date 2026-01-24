@@ -5,6 +5,7 @@ import { hp, wp } from "@/utils/responsive";
 
 export const colorPalette = {
   primaryBg: {
+    primaryYellow: "#FFA800",
     primaryOrange: "#FF6600",
     primaryBlack: "#000000",
     primaryGrey: "#F5F5F4",
@@ -14,12 +15,14 @@ export const colorPalette = {
     quinary: "#79716B",
     tertiary: "#FAFAF9",
     primary: "#1C1917",
+    senary: "rgba(255, 255, 255, 0.4)",
 
     primaryWhite: "#ffffff",
     primaryRed: "#FD2828FF",
 
     transparent: "rgba(0,0,0,0)",
     transparentWhite: "rgba(255,255,255,0.8)",
+    orangeWithOpacity: "rgba(255, 102, 0, 0.1)",
   },
 };
 
@@ -85,7 +88,7 @@ export const Typography = StyleSheet.create({
     fontSize: Fonts.size.xl,
     letterSpacing: 0.1,
     color: colorPalette.primaryBg.primaryBlack,
-    fontFamily: AppFont.semiBold,
+    fontFamily: AppFont.bold,
   },
   primaryHeading: {
     fontSize: Fonts.size.md,
@@ -118,13 +121,15 @@ export const Typography = StyleSheet.create({
     fontFamily: AppFont.bold,
   },
   errorText: {
-    fontSize: Fonts.size.sm,
+    fontSize: Fonts.size.xs,
     fontFamily: AppFont.regular,
     color: colorPalette.primaryBg.primaryRed,
   },
 });
 
 export const iconSize = wp(5);
+
+export const GRADIENT_COLORS = ["#FF8533", colorPalette.primaryBg.primaryOrange] as const;
 
 export const FormsStyle = StyleSheet.create({
   formControl: {
@@ -145,7 +150,7 @@ export const FormsStyle = StyleSheet.create({
 export const LayoutStyles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    paddingTop: wp(10),
+    paddingTop: Spacing.lg,
   },
   headerNavContainer: {
     flexDirection: "row",
